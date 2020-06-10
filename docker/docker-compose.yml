@@ -7,7 +7,7 @@ services:
     container_name: mysql_host
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: life_graph_database
+      MYSQL_DATABASE: javaGame_database
       MYSQL_USER: user
       MYSQL_PASSWORD: password
       TZ: 'Asia/Tokyo'
