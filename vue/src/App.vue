@@ -2,10 +2,16 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">
-        Home
+        Top
       </router-link> |
-      <router-link to="/about">
-        About
+      <router-link to="/question">
+        question
+      </router-link>
+      <router-link to="/answer">
+        answer
+      </router-link>
+      <router-link to="/results">
+        results
       </router-link>
     </div>
     <router-view />
