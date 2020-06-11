@@ -1,7 +1,3 @@
 -- insert sqls
--- user
-INSERT INTO `users`
-  (`id`, `name`)
-VALUES
-  (1, 'taro'),
-  (2, 'jiro');
+INSERT INTO Question VALUES (1,'AAAAA?','B','C','D','E');
+INSERT INTO Correct_Answer VALUES (1,1,'B','C');
