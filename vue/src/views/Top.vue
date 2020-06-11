@@ -7,7 +7,7 @@
       Team20の４択クイズを作ろうとしています。
     </p>
     <router-link to="/question">
-      <button type=button>
+      <button type="button">
         START!!!
       </button>
     </router-link>
