@@ -1,18 +1,22 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="top">
+    <div class="title">
+      気軽GAMES
+    </div>
+    <p class="explain">
+      Team20の４択クイズを作ろうとしています。
+    </p>
+    <router-link to="/question">
+      <button type=button>
+        START!!!
+      </button>
+    </router-link>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
+<style>
 
-export default {
-  name: 'Top',
-
-  created () {
-    this.$store.dispatch('fetchLogin')
-  }
+.title{
+  font-weight: bold;
 }
-</script>
+</style>
