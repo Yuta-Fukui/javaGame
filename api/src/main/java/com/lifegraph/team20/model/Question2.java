@@ -1,22 +1,23 @@
 package com.lifegraph.team20.model;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Data
 @NoArgsConstructor
-@Table(name = "Question")
-public class Question {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+@AllArgsConstructor
+@Table(name = "question")
+public class Question2 {
+    @Id
+    @GeneratedValue
+    private Long id;
 
 	@Column(name = "questionStatement")
 	private String questionStatement;
