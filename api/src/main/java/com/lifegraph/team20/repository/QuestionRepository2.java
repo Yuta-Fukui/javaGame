@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.lifegraph.team20.entity.Question2;
 
+
 @Repository
 public class QuestionRepository2  {
 

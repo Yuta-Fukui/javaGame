@@ -12,6 +12,7 @@ import com.lifegraph.team20.entity.Question2;
 import com.lifegraph.team20.service.QuestionService2;
 
 
+
 @Controller
 public class JavaGame2 {
 	@Autowired

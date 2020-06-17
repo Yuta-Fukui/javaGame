@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.lifegraph.team20.entity.Question2;
 import com.lifegraph.team20.repository.QuestionRepository2;
 
+
 @Service
 public class QuestionService2 {
 
