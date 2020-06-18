@@ -22,13 +22,10 @@ public class JavaGame2 {
 	public ResponseEntity<List<Question2>> question() throws IOException {
 		// Listを適当に作っていれる
 
+		List<Question2> listB = qs.updateQuestions();
+		System.out.println(listB.toString());
 
-		List<Question2> list = qs.updateQuestions();
-		System.out.println(list.toString());
-		for(Question2 question : list) {
 
-			System.out.println(question.toString());
-		}
-		return ResponseEntity.ok(list);
+		return ResponseEntity.ok(listB);
 	}
 }

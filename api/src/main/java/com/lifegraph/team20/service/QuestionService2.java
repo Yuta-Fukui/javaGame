@@ -3,6 +3,7 @@ package com.lifegraph.team20.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,15 @@ public class QuestionService2 {
 		List<Question2> list = new ArrayList<Question2>();
 		list = qr.selectQuestions();
 		Collections.shuffle(list);
-		return list;
+		limit(list);
 
+	return list;
 	}
-
+	public void limit(List<Question2> list) {
+			list.stream()
+			.limit(5)
+			.collect(Collectors.toList());
+//			for(Question2 question : list)
+	}
 }
+

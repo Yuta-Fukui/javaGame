@@ -22,7 +22,7 @@ public class QuestionRepository2  {
 		final String sql = "select * from Question";
 		return db.query(sql, new RowMapper<Question2>() {
 			public Question2 mapRow(ResultSet rs, int RowNum) throws SQLException {
-				return new Question2(rs.getLong(RowNum), rs.getString("questionStatement"), rs.getString("answer1"),
+				return new Question2(rs.getLong("id"), rs.getString("questionStatement"), rs.getString("answer1"),
 						rs.getString("answer2"),rs.getString("answer3"),rs.getString("answer4"));
 			}
 		});
