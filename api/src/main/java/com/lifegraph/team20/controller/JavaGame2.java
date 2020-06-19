@@ -15,17 +15,21 @@ import com.lifegraph.team20.service.QuestionService2;
 
 @Controller
 public class JavaGame2 {
-	@Autowired
-	private QuestionService2 qs;
+	@Autowired//抽象クラスからメソッドを使える用にインポートしてる
+	private QuestionService2 qs;//qsは名前つけただけ
 
 	@GetMapping(value = "/question")
 	public ResponseEntity<List<Question2>> question() throws IOException {
-		// Listを適当に作っていれる
+		//そもそもlistとは・・・複数のオブジェクトが入っている参照型のデータ型。
 
-		List<Question2> listB = qs.updateQuestions();
+		List<Question2> listA = qs.updateQuestions();
+		System.out.println(listA.toString());
+
+		//シャッフルとかできているか１つ１つ出して確認
+		for(Question2 listB : listA) {
 		System.out.println(listB.toString());
-
-
-		return ResponseEntity.ok(listB);
+		//ブロック内の変数を使いなさい！（forの最後が;になってて「listBなんてなかったんや！」ってなってた）
+		}
+		return ResponseEntity.ok(listA);
 	}
 }

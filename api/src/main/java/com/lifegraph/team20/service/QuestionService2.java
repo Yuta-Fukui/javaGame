@@ -18,23 +18,19 @@ public class QuestionService2 {
 	@Autowired
 	private QuestionRepository2 qr;
 
-//	public void Question(QurstionRepository2 qr) {
-//	List<Question2> list = qr.selectQuestions();
-//		System.out.println(list.toString());
-//	}
 	public List<Question2> updateQuestions() {
 		List<Question2> list = new ArrayList<Question2>();
 		list = qr.selectQuestions();
-		Collections.shuffle(list);
-		limit(list);
+		Collections.shuffle(list);//レコードの順番をシャッフルに
+		List<Question2> listC = restrict(list);
+
+	return listC;
+	}
+	public List<Question2> restrict(List<Question2> list) {
+			list.stream()//streamのメソッドを使うよ
+			.limit(5)//streamの中間操作（5個だけ取り出す）
+			.collect(Collectors.toList());//streamの終端操作（中間操作をした物をListの形に戻す）
 
 	return list;
 	}
-	public void limit(List<Question2> list) {
-			list.stream()
-			.limit(5)
-			.collect(Collectors.toList());
-//			for(Question2 question : list)
-	}
 }
-
