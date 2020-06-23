@@ -25,8 +25,6 @@ public class JavaGame2 {
 
 		// get Question
 		Question2 list = qs.updatedQuestion();
-		System.out.println(list.toString());
-		System.out.println("-----------------");
 
 		return ResponseEntity.ok(list);
 	}
@@ -41,17 +39,10 @@ public class JavaGame2 {
 //		return ResponseEntity.ok(answer);
 //	}
 
-	@PostMapping(value = "/answer")
-	public ResponseEntity<List<Answer>> answer(@RequestParam("questionId") Long questionId, @RequestParam("correctAnswer") String correctAnswer) throws IOException {
+	@GetMapping(value = "/answer")
+	public ResponseEntity<List<Answer>> answer(@RequestParam("questionId") Long questionId) throws IOException {
 
-		List<Answer> answer = qs.updatedAnswer(questionId,correctAnswer);
-		System.out.println(answer.toString());
-		System.out.println("-----------------");
-
-//		// 正解不正解で返却値を変える
-//		if () {
-//
-//		}
+		List<Answer> answer = qs.updatedAnswer(questionId);
 
 		return ResponseEntity.ok(answer);
 	}

@@ -26,44 +26,34 @@ public class QuestionService2 {
 
 	public void getQuestions() {
 		// make ArrayList
-		List<Question2> question = new ArrayList<Question2>();
+		List<Question2> getquestion = new ArrayList<Question2>();
 		// insert into list
-		question = qr.selectQuestions();
+		getquestion = qr.selectQuestions();
 
 		// shuffle object
-		Collections.shuffle(question);
+		Collections.shuffle(getquestion);
 
 		// limited the number of Questions
-		List<Question2> list2 =question.stream()
+		List<Question2> selectQuestions =getquestion.stream()
 				.limit(5)
 				.collect(Collectors.toList());
-		list.addAll(list2);
+		list.addAll(selectQuestions);
 
-		list2 = this.getList();
-		setList(list2);
 	}
 
 	public Question2 updatedQuestion() {
 		if(list.isEmpty()) {
 			this.getQuestions();
-			Question2 question = list.get(0);
+			Question2 selectQuestion = list.get(0);
 //			for(Question2 list2 : list) {
 //				System.out.println(list2.toString());
 //			}
 //			System.out.println("-----------------");
-			return question;
+			return selectQuestion;
 		} else {
-//			List<Question2> questions = list;
-			// get one Question
-//			questions = this.getList();
-			// 確認用
-//			for(Question2 list2 : list) {
-//				System.out.println(list2.toString());
-//			}
-			Question2 question = list.get(0);
-//			System.out.println("-----------------");
-//
-			return question;
+			Question2 selectQuestion = list.get(0);
+
+			return selectQuestion;
 		}
 	}
 
@@ -97,40 +87,10 @@ public class QuestionService2 {
 //		updatedAnswer(questionId);
 //	}
 
-	public List<Answer> updatedAnswer(Long questionId,String correctAnswer) {
+	public List<Answer> updatedAnswer(Long questionId) {
 		Long id = questionId;
 		List<Answer> answer = qr.selectAnswer(id);
 		list.remove(0);
-//		list = this.getList();
-//		setList(list);
-
-		// もし問題に正解したらカウントする
-		if(qr.confilmedAnswer(questionId,correctAnswer)) {
-			isTrue();
-		}
-//		List<Question2> list3 = list;
-//		for(Question2 list4 : list3) {
-//			System.out.println(list4.toString());
-//		}
-//
-//		System.out.println("-----------------");
 		return answer;
-	}
-
-	public void setList(List<Question2> list) {
-		this.list = list;
-	}
-
-	public List<Question2> getList() {
-		return list;
-	}
-
-	public void isTrue() {
-		this.count ++;
-	}
-
-	// correct_
-	public void isResult() {
-
 	}
 }
