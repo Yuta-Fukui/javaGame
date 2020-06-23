@@ -20,7 +20,7 @@ public class JavaGame {
 	@Autowired
 	public JavaGameService service;
 
-	@GetMapping(value = "/question")
+	@GetMapping(value = "/questio")
 	public ResponseEntity<List<Question>> Question(){
 
 		System.out.println("あ");

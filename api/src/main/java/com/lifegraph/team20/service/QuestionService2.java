@@ -19,47 +19,38 @@ public class QuestionService2 {
 	@Autowired
 	private QuestionRepository2 qr;
 
-	List<Question2> list = new ArrayList<Question2>();
-//	List<Question2> list;
-
+	List<Question2> list = new ArrayList<Question2>();//listを定義。
 	public int count = 0;
 
 	public void getQuestions() {
-		// make ArrayList
 		List<Question2> question = new ArrayList<Question2>();
-		// insert into list
 		question = qr.selectQuestions();
 
-		// shuffle object
 		Collections.shuffle(question);
-
-		// limited the number of Questions
 		List<Question2> list2 =question.stream()
 				.limit(5)
 				.collect(Collectors.toList());
-		list.addAll(list2);
+		list.addAll(list2);//結構上で定義したlistに、streamでいじったlist2を追加している。ここではlist=list2
 
-		list2 = this.getList();
-		setList(list2);
+		//getters,settersを下で定義している。それを動かすメソッド。
+//		list2 = this.getList();
+//		setList(list2);
 	}
 
 	public Question2 updatedQuestion() {
-		if(list.isEmpty()) {
-			this.getQuestions();
-			Question2 question = list.get(0);
-//			for(Question2 list2 : list) {
-//				System.out.println(list2.toString());
-//			}
-//			System.out.println("-----------------");
+		if(list.isEmpty()) {//isEmpty：listが空かどうかを判別（空であればtrue）
+			this.getQuestions();//上で定義。SQl文を用いてデータを取得、シャッフル、List化している。最終的にlistへ代入。
+			Question2 question = list.get(0);//listの0個目の要素を取得
+//for(Question2 list2 : list) {
+//System.out.println(list2.toString());
+//}
 			return question;
-		} else {
-//			List<Question2> questions = list;
-			// get one Question
-//			questions = this.getList();
-			// 確認用
-//			for(Question2 list2 : list) {
-//				System.out.println(list2.toString());
-//			}
+		} else {//listに何か入っている時
+//List<Question2> questions = list;
+//questions = this.getList();
+//for(Question2 list2 : list) {
+//System.out.println(list2.toString());
+//}
 			Question2 question = list.get(0);
 //			System.out.println("-----------------");
 //
