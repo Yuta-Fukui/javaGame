@@ -41,10 +41,10 @@ public class QuestionRepository2  {
 		});
 	}
 
-	public Boolean confilmedAnswer(Long questionId,String correctAnswer) {
-		final String sql = "select count(*) from Correct_Answer where questionId =" + questionId + "and correctAnswer =" + correctAnswer;
-		Integer count = db.queryForObject(sql, Integer.class);
-	      return 1 <= count;
+	// public Boolean confilmedAnswer(Long questionId,String correctAnswer) {
+	// 	final String sql = "select count(*) from Correct_Answer where questionId =" + questionId + "and correctAnswer =" + correctAnswer;
+	// 	Integer count = db.queryForObject(sql, Integer.class);
+	//       return 1 <= count;
 
-	}
+	// }
 }
