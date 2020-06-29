@@ -7,12 +7,22 @@
       Team20の４択クイズを作ろうとしています。
     </p>
     <router-link to="/question">
-      <button type=button>
+      <button @click="question()">
         START!!!
       </button>
     </router-link>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    question () {
+      this.$store.dispatch('getQuestion')
+    }
+  }
+}
+</script>
 
 <style>
 
