@@ -6,20 +6,23 @@ Vue.use(Vuex)
 
 export default {
   state: {
-    correctAnswer: [],
-    explanation: []
+    contents: {},
+    loaded: false,
+    correctCount: 0
   },
   mutations: {
     answer (state, payload) {
-      state.correctAnswer = payload.correctAnswer
-      state.explanation = payload.explanation
+      state.contents = payload
+      // state.explanation = payload.explanation
+      // debugger
+      state.loaded = true
+      state.correctCount++
     }
   },
   actions: {
-    getAnswer ({ commit }, id) {
-      console.log('OK!!')
-      const url = '/answer/' + id
-      axios.get(url)
+    async getAnswer ({ commit }, questionId) {
+      const url = '/api/answer/' + questionId
+      await axios.get(url)
         .then(res => commit('answer', res.data))
     }
   }
