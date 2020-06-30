@@ -16,10 +16,11 @@ export default {
       // state.explanation = payload.explanation
       // debugger
       state.loaded = true
-    },
-    addCount (state, payload) {
       state.count++
     }
+    // addCount (state, payload) {
+    //   state.count++
+    // }
   },
   actions: {
     async getQuestion ({ commit }) {
