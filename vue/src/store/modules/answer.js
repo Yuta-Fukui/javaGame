@@ -16,13 +16,13 @@ export default {
   mutations: {
     answer (state, payload) {
       state.contents = payload
-      // state.explanation = payload.explanation
-      // debugger
       state.loaded = true
-      state.correctCount++
     },
     getAnswer (state, payload) {
       state.answer = payload
+    },
+    addCount (state) {
+      state.correctCount++
     }
   },
   actions: {

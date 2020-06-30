@@ -7,7 +7,7 @@
       不正解・・・
     </h1>
     <h1 class="answer">
-      正解：{{ selectAnswer }}
+      正解：{{ correctAnswer }}
     </h1>
     <h2>
       解説：{{ selectExplain }}
@@ -39,7 +39,7 @@ export default {
     }
   },
   computed: {
-    selectAnswer () {
+    correctAnswer () {
       return this.$store.state.answer.contents[0].correctAnswer
     },
     selectExplain () {
@@ -50,21 +50,32 @@ export default {
     }
   },
   created () {
-    const count = this.$store.state.question.count
-    const correctAnswer = this.$store.state.answer.contents[0].correctAnswer
-    const answer = this.$store.state.answer.answer
-    console.log(correctAnswer)
-    if (count % 5 === 0) {
-      this.show = !this.show
-    }
-    if (this.correctAnswer !== answer) {
-      this.answerShow = false
-    }
+    this.getAnswer()
+    this.isShow()
   },
 
   methods: {
     question () {
       this.$store.dispatch('getQuestion')
+    },
+    isShow () {
+      const count = this.$store.state.question.count
+      if (count % 5 === 0) {
+        this.show = !this.show
+      }
+    },
+    async getAnswer () {
+      const correctAnswer = this.$store.state.answer.contents[0].correctAnswer
+      const answer = this.$store.state.answer.answer
+      // await isCount()
+      // const isCount = () => {
+      if (correctAnswer !== answer) {
+        this.answerShow = false
+      } else {
+        this.answerShow = true
+        this.$store.commit('addCount')
+      }
+      // }
     }
   }
 }
