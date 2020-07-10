@@ -13,14 +13,9 @@ export default {
   mutations: {
     question (state, payload) {
       state.contents = payload
-      // state.explanation = payload.explanation
-      // debugger
       state.loaded = true
       state.count++
     }
-    // addCount (state, payload) {
-    //   state.count++
-    // }
   },
   actions: {
     async getQuestion ({ commit }) {
