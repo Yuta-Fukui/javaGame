@@ -37,7 +37,6 @@ export default {
       const url = '/api/answer/' + questionId
       await axios.get(url)
         .then(res => commit('answer', res.data))
-      console.log('OK')
     }
   }
 }

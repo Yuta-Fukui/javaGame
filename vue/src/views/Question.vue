@@ -29,9 +29,8 @@
         D
       </button>
     </div>
-
     <!-- ここから実際の問題 -->
-    <div v-if="loaded" class="question">
+    <div v-else class="question">
       <h1>問題{{ isCounted() }}</h1>
       <p class="question">
         {{ selectQuestion }}
@@ -89,7 +88,7 @@ export default {
   },
   methods: {
     answer (answer) {
-      const selectedAnswer = answer // <= selectAnswer2
+      const selectedAnswer = answer
       const questionId = this.$store.state.question.contents.id
       // 正解と解説をDBから持ってくる
       this.$store.dispatch('getAnswer', questionId)

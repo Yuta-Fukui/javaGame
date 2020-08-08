@@ -17,7 +17,7 @@
       </router-link>
     </div>
 
-    <div v-if="loaded">
+    <div v-else>
       <h1 v-if="answerShow" class="true">
         正解!
       </h1>
@@ -67,7 +67,7 @@ export default {
     }
   },
   created () {
-    return this.getAnswer().then(this.isShow())
+    return this.getAnswer()
   },
 
   methods: {
@@ -80,7 +80,6 @@ export default {
     // 全ての問題を回答したらボタンを入れ替える
     isShow () {
       const count = this.$store.state.question.count
-      console.log('isShow')
       if (count % 5 === 0) {
         this.show = !this.show
       }
@@ -88,9 +87,6 @@ export default {
 
     // 正解かどうかを判断し、正解ならばカウントする
     getAnswer () {
-      console.log('正解は' + this.correctAnswers)
-      console.log('答えは' + this.answer)
-      console.log('---------------------')
       if (this.correctAnswers !== this.answer) {
         this.answerShow = false
       } else {
