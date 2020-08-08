@@ -74,7 +74,7 @@ export default {
     // 次の問題を出力する
     question () {
       this.$store.dispatch('getQuestion')
-      this.$store.commit('clearAnswer')
+      // this.$store.commit('clearAnswer')
     },
 
     // 全ての問題を回答したらボタンを入れ替える
