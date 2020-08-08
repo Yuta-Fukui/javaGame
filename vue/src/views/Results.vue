@@ -7,7 +7,7 @@
       <h3>{{ comment }}</h3>
     </div>
     <router-link to="/">
-      <button class="button">
+      <button class="button" @click="initCount()">
         スタートに戻る
       </button>
     </router-link>
@@ -41,6 +41,9 @@ export default {
       } else {
         this.comment = 'くそ！！'
       }
+    },
+    initCount () {
+      this.$store.commit('initCount')
     }
   }
 }
