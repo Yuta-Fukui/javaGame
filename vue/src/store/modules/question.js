@@ -15,12 +15,15 @@ export default {
       state.contents = payload
       state.loaded = true
       state.count++
+    },
+    initCount (state) {
+      state.count = 0
     }
   },
   actions: {
-    async getQuestion ({ commit }) {
+    getQuestion ({ commit }) {
       const url = '/api/question'
-      await axios.get(url)
+      axios.get(url)
         .then(res => commit('question', res.data))
     }
   }

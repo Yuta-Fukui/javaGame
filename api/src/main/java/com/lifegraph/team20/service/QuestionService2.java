@@ -26,15 +26,15 @@ public class QuestionService2 {
 
 	public void getQuestions() {
 		// make ArrayList
-		List<Question2> getquestion = new ArrayList<Question2>();
+		List<Question2> getQuestion = new ArrayList<Question2>();
 		// insert into list
-		getquestion = qr.selectQuestions();
+		getQuestion = qr.selectQuestions();
 
 		// shuffle object
-		Collections.shuffle(getquestion);
+		Collections.shuffle(getQuestion);
 
 		// limited the number of Questions
-		List<Question2> selectQuestions =getquestion.stream()
+		List<Question2> selectQuestions =getQuestion.stream()
 				.limit(5)
 				.collect(Collectors.toList());
 		list.addAll(selectQuestions);
@@ -51,46 +51,17 @@ public class QuestionService2 {
 //			System.out.println("-----------------");
 			return selectQuestion;
 		} else {
+			list.remove(0);
+			Collections.shuffle(list);
 			Question2 selectQuestion = list.get(0);
 
 			return selectQuestion;
 		}
 	}
 
-//	public void updateQuestions() {
-//		List<Question2> list = new ArrayList<Question2>();
-//		list = qr.selectQuestions();
-//		Collections.shuffle(list);
-//		List<Question2> list2 = list.stream()
-//				.limit(5)
-//				.collect(Collectors.toList());
-//				for(Question2 question : list2) {
-//
-//					System.out.println(question.toString());
-//				}
-//	}
-//
-//	public List<Question2> shuffle() {
-//		List<Question2> list = this.updateQuestions();
-//		List<Question2> list2 = list.stream()
-//				.limit(5)
-//				.collect(Collectors.toList());
-//				for(Question2 question : list2) {
-//
-//					System.out.println(question.toString());
-//				}
-//		return list2;
-//	}
-//	public void getQuestionId(QuestionIdResponse id) {
-//		Long questionId = id.getQuestionId();
-//		System.out.println(questionId);
-//		updatedAnswer(questionId);
-//	}
-
 	public List<Answer> updatedAnswer(Long questionId) {
 		Long id = questionId;
 		List<Answer> answer = qr.selectAnswer(id);
-		list.remove(0);
 		return answer;
 	}
 }
