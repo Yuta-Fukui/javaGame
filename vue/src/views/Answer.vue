@@ -1,10 +1,7 @@
 <template>
   <div v-if="loaded" class="answer">
-    <h1 v-if="answerShow" class="true">
-      正解!
-    </h1>
-    <h1 v-if="!answerShow" class="false">
-      不正解・・・
+    <h1>
+      {{ comment }}
     </h1>
     <h1 class="answer">
       正解：{{ correctAnswers }}
@@ -12,14 +9,16 @@
     <h2>
       解説：{{ selectExplain }}
     </h2>
-    <div>
+    <div v-if="show">
       <router-link to="/question" class="btn_to_question">
-        <button v-if="show" @click="question()">
+        <button @click="question()">
           次の問題へ
         </button>
       </router-link>
+    </div>
+    <div v-else>
       <router-link to="/results" class="btn_to_question">
-        <button v-if="!show" @click="question()">
+        <button @click="question()">
           結果画面へ
         </button>
       </router-link>
@@ -33,8 +32,9 @@ export default {
     return {
       show: true,
       answerShow: true,
-      answer: this.$store.state.answer.answer,
-      correctAnswer: this.$store.state.answer.contents[0].correctAnswer
+      correctAnswer: '',
+      answer: '',
+      comment: ''
     }
   },
   computed: {
@@ -49,8 +49,7 @@ export default {
     }
   },
   created () {
-    this.isShow()
-    setTimeout(this.getAnswer, 1000)
+    this.getAnswer()
   },
 
   methods: {
@@ -63,19 +62,30 @@ export default {
     // 全ての問題を回答したらボタンを入れ替える
     isShow () {
       const count = this.$store.state.question.count
-      if (count % 5 === 0) {
+      if (count === 5) {
         this.show = !this.show
       }
     },
 
     // 正解かどうかを判断し、正解ならばカウントする
     getAnswer () {
+      this.correctAnswer = this.$store.state.answer.contents[0].correctAnswer
+      this.answer = this.$store.state.answer.answer
       if (this.correctAnswer !== this.answer) {
         this.answerShow = false
       } else {
         this.answerShow = true
         this.$store.commit('addCount')
       }
+
+      this.isShow()
+
+      // console.log('answerShow:' + this.show)
+      console.log('正しい答えは' + this.correctAnswer)
+      console.log('あなたの答えは' + this.answer)
+
+      this.answerShow ? this.comment = '正解' : this.comment = '不正解'
+      return this.comment
     }
   }
 }

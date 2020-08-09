@@ -20,7 +20,7 @@ export default {
       state.loaded = true
     },
     // 画面で選択された解答を受け取る
-    getAnswer (state, payload) {
+    setAnswer (state, payload) {
       state.answer = payload
     },
     // 正解数を数える
@@ -36,7 +36,9 @@ export default {
     async getAnswer ({ commit }, questionId) {
       const url = '/api/answer/' + questionId
       await axios.get(url)
-        .then(res => commit('answer', res.data))
+        .then(res => {
+          commit('answer', res.data)
+        })
     }
   }
 }

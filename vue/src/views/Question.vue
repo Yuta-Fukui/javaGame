@@ -5,26 +5,18 @@
     <p class="question">
       {{ selectQuestion }}
     </p>
-    <router-link to="/answer">
-      <button @click="answer(selectAnswer1)">
-        {{ selectAnswer1 }}
-      </button>
-    </router-link>
-    <router-link to="/answer">
-      <button @click="answer(selectAnswer2)">
-        {{ selectAnswer2 }}
-      </button>
-    </router-link>
-    <router-link to="/answer">
-      <button @click="answer(selectAnswer3)">
-        {{ selectAnswer3 }}
-      </button>
-    </router-link>
-    <router-link to="/answer">
-      <button @click="answer(selectAnswer4)">
-        {{ selectAnswer4 }}
-      </button>
-    </router-link>
+    <button @click="answer(selectAnswer1)">
+      {{ selectAnswer1 }}
+    </button>
+    <button @click="answer(selectAnswer2)">
+      {{ selectAnswer2 }}
+    </button>
+    <button @click="answer(selectAnswer3)">
+      {{ selectAnswer3 }}
+    </button>
+    <button @click="answer(selectAnswer4)">
+      {{ selectAnswer4 }}
+    </button>
   </div>
 </template>
 
@@ -61,9 +53,12 @@ export default {
       const questionId = this.$store.state.question.contents.id
       // 正解と解説をDBから持ってくる
       this.$store.dispatch('getAnswer', questionId)
+        .then(() => {
+          this.$router.push('/answer')
+        })
 
       // 次の画面に回答した答えを持っていく
-      this.$store.commit('getAnswer', selectedAnswer)
+      this.$store.commit('setAnswer', selectedAnswer)
     },
     // 何回問題を解いたかを数える
     isCounted () {
