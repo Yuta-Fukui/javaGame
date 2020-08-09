@@ -3,15 +3,6 @@
     <div id="nav">
       <router-link to="/">
         Top
-      </router-link> |
-      <router-link to="/question">
-        question
-      </router-link>
-      <router-link to="/answer">
-        answer
-      </router-link>
-      <router-link to="/results">
-        results
       </router-link>
     </div>
     <router-view />
@@ -34,9 +25,5 @@
 #nav a {
   color: #2c3e50;
   font-weight: bold;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

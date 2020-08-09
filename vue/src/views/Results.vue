@@ -35,9 +35,9 @@ export default {
       const count = this.$store.state.answer.correctCount
       this.result = count / 5 * 100
       if (count === 5) {
-        this.comment = '天才かよ'
+        this.comment = '天才かよ！！'
       } else if (count >= 3 && count < 5) {
-        this.comment = 'まだまだだね（越前リョーマ風）'
+        this.comment = 'あと少し！！'
       } else {
         this.comment = 'くそ！！'
       }
@@ -58,8 +58,8 @@ export default {
     margin: 0 auto;
   }
   .button {
-   padding: 20px;
-   margin: 0 auto;
+    padding: 20px;
+    margin: 0 auto;
   }
 
 </style>

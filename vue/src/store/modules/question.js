@@ -6,13 +6,17 @@ Vue.use(Vuex)
 
 export default {
   state: {
-    contents: {},
+    choices: [],
     loaded: false,
-    count: 0
+    count: 0,
+    questionStatement: '',
+    questionId: ''
   },
   mutations: {
     question (state, payload) {
-      state.contents = payload
+      state.choices = [payload.answer1, payload.answer2, payload.answer3, payload.answer4]
+      state.questionStatement = payload.questionStatement
+      state.questionId = payload.id
       state.loaded = true
       state.count++
     },

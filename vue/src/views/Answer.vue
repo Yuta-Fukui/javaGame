@@ -1,10 +1,7 @@
 <template>
   <div v-if="loaded" class="answer">
-    <h1 v-if="answerShow" class="true">
-      正解!
-    </h1>
-    <h1 v-if="!answerShow" class="false">
-      不正解・・・
+    <h1>
+      {{ comment }}
     </h1>
     <h1 class="answer">
       正解：{{ correctAnswers }}
@@ -12,18 +9,11 @@
     <h2>
       解説：{{ selectExplain }}
     </h2>
-    <div>
-      <router-link to="/question" class="btn_to_question">
-        <button v-if="show" @click="question()">
-          次の問題へ
+    <template>
+        <button @click="question()" class="btn_to_question">
+          {{ btn }}
         </button>
-      </router-link>
-      <router-link to="/results" class="btn_to_question">
-        <button v-if="!show" @click="question()">
-          結果画面へ
-        </button>
-      </router-link>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -33,8 +23,10 @@ export default {
     return {
       show: true,
       answerShow: true,
-      answer: this.$store.state.answer.answer,
-      correctAnswer: this.$store.state.answer.contents[0].correctAnswer
+      correctAnswer: '',
+      answer: '',
+      comment: '',
+      btn: '次の問題へ'
     }
   },
   computed: {
@@ -49,33 +41,46 @@ export default {
     }
   },
   created () {
-    this.isShow()
-    setTimeout(this.getAnswer, 1000)
+    this.getAnswer()
   },
 
   methods: {
     // 次の問題を出力する
     question () {
       this.$store.dispatch('getQuestion')
-      this.$store.commit('clearAnswer')
+        .then(() => {
+          if (this.show === true) {
+            this.$router.push('/question')
+          } else {
+            this.$router.push('/results')
+          }
+        })
     },
 
     // 全ての問題を回答したらボタンを入れ替える
     isShow () {
       const count = this.$store.state.question.count
-      if (count % 5 === 0) {
+      if (count === 5) {
         this.show = !this.show
+        this.btn = this.show ? '次の問題へ' : '結果画面へ'
       }
     },
 
     // 正解かどうかを判断し、正解ならばカウントする
     getAnswer () {
+      this.correctAnswer = this.$store.state.answer.contents[0].correctAnswer
+      this.answer = this.$store.state.answer.answer
+
       if (this.correctAnswer !== this.answer) {
         this.answerShow = false
       } else {
         this.answerShow = true
         this.$store.commit('addCount')
       }
+
+      this.isShow()
+
+      this.comment = this.answerShow ? '正解' : '不正解'
     }
   }
 }

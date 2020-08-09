@@ -1,30 +1,14 @@
 <template>
-  <!-- // 見本問題を出力する -->
   <div v-if="loaded" class="question">
     <h1>問題{{ isCounted() }}</h1>
     <p class="question">
       {{ selectQuestion }}
     </p>
-    <router-link to="/answer">
-      <button @click="answer(selectAnswer1)">
-        {{ selectAnswer1 }}
+    <template v-for="(item, index) in computedChoices">
+      <button :key="index" @click="answer(item)">
+        {{ item }}
       </button>
-    </router-link>
-    <router-link to="/answer">
-      <button @click="answer(selectAnswer2)">
-        {{ selectAnswer2 }}
-      </button>
-    </router-link>
-    <router-link to="/answer">
-      <button @click="answer(selectAnswer3)">
-        {{ selectAnswer3 }}
-      </button>
-    </router-link>
-    <router-link to="/answer">
-      <button @click="answer(selectAnswer4)">
-        {{ selectAnswer4 }}
-      </button>
-    </router-link>
+    </template>
   </div>
 </template>
 
@@ -37,33 +21,27 @@ export default {
   },
   computed: {
     selectQuestion () {
-      return this.$store.state.question.contents.questionStatement
-    },
-    selectAnswer1 () {
-      return this.$store.state.question.contents.answer1
-    },
-    selectAnswer2 () {
-      return this.$store.state.question.contents.answer2
-    },
-    selectAnswer3 () {
-      return this.$store.state.question.contents.answer3
-    },
-    selectAnswer4 () {
-      return this.$store.state.question.contents.answer4
+      return this.$store.state.question.questionStatement
     },
     loaded () {
       return this.$store.state.question.loaded
+    },
+    computedChoices () {
+      return this.$store.state.question.choices
     }
   },
   methods: {
     answer (answer) {
       const selectedAnswer = answer
-      const questionId = this.$store.state.question.contents.id
+      const questionId = this.$store.state.question.questionId
       // 正解と解説をDBから持ってくる
       this.$store.dispatch('getAnswer', questionId)
+        .then(() => {
+          this.$router.push('/answer')
+        })
 
       // 次の画面に回答した答えを持っていく
-      this.$store.commit('getAnswer', selectedAnswer)
+      this.$store.commit('setAnswer', selectedAnswer)
     },
     // 何回問題を解いたかを数える
     isCounted () {
