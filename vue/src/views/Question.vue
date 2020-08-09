@@ -1,61 +1,30 @@
 <template>
   <!-- // 見本問題を出力する -->
-  <div class="question">
-    <div v-if="!loaded">
-      <h1>見本問題</h1>
-      <p class="question">
-      <!-- ここに見本の問題をかく -->
-      </p>
-      <router-link to="/answer">
-        <button>
-          <!-- ここに見本の答えをかく -->
-          <!-- ここを押すように指示を出す -->
-          A
-        </button>
-      </router-link>
-      <button @click="alerted()">
-        <!-- ここを押したら警告をする -->
-        <!-- 画面は遷移しない -->
-        B
+  <div v-if="loaded" class="question">
+    <h1>問題{{ isCounted() }}</h1>
+    <p class="question">
+      {{ selectQuestion }}
+    </p>
+    <router-link to="/answer">
+      <button @click="answer(selectAnswer1)">
+        {{ selectAnswer1 }}
       </button>
-      <button @click="alerted()">
-        <!-- ここを押したら警告をする -->
-        <!-- 画面は遷移しない -->
-        C
+    </router-link>
+    <router-link to="/answer">
+      <button @click="answer(selectAnswer2)">
+        {{ selectAnswer2 }}
       </button>
-      <button @click="alerted()">
-        <!-- ここを押したら警告をする -->
-        <!-- 画面は遷移しない -->
-        D
+    </router-link>
+    <router-link to="/answer">
+      <button @click="answer(selectAnswer3)">
+        {{ selectAnswer3 }}
       </button>
-    </div>
-    <!-- ここから実際の問題 -->
-    <div v-else class="question">
-      <h1>問題{{ isCounted() }}</h1>
-      <p class="question">
-        {{ selectQuestion }}
-      </p>
-      <router-link to="/answer">
-        <button @click="answer(selectAnswer1)">
-          {{ selectAnswer1 }}
-        </button>
-      </router-link>
-      <router-link to="/answer">
-        <button @click="answer(selectAnswer2)">
-          {{ selectAnswer2 }}
-        </button>
-      </router-link>
-      <router-link to="/answer">
-        <button @click="answer(selectAnswer3)">
-          {{ selectAnswer3 }}
-        </button>
-      </router-link>
-      <router-link to="/answer">
-        <button @click="answer(selectAnswer4)">
-          {{ selectAnswer4 }}
-        </button>
-      </router-link>
-    </div>
+    </router-link>
+    <router-link to="/answer">
+      <button @click="answer(selectAnswer4)">
+        {{ selectAnswer4 }}
+      </button>
+    </router-link>
   </div>
 </template>
 
@@ -100,9 +69,6 @@ export default {
     isCounted () {
       this.count = this.$store.state.question.count
       return this.count
-    },
-    alerted () {
-      window.alert('正解を押してください!!')
     }
   }
 }

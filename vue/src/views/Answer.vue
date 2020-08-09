@@ -1,47 +1,28 @@
 <template>
-  <div class="answer">
-    <div v-if="!loaded">
-      <h1 class="true">
-        正解!
-      </h1>
-      <h1 class="answer">
-        正解：A
-      </h1>
-      <h2>
-        解説：こんな感じでいきます
-      </h2>
+  <div v-if="loaded" class="answer">
+    <h1 v-if="answerShow" class="true">
+      正解!
+    </h1>
+    <h1 v-if="!answerShow" class="false">
+      不正解・・・
+    </h1>
+    <h1 class="answer">
+      正解：{{ correctAnswers }}
+    </h1>
+    <h2>
+      解説：{{ selectExplain }}
+    </h2>
+    <div>
       <router-link to="/question" class="btn_to_question">
-        <button @click="question()">
+        <button v-if="show" @click="question()">
           次の問題へ
         </button>
       </router-link>
-    </div>
-
-    <div v-else>
-      <h1 v-if="answerShow" class="true">
-        正解!
-      </h1>
-      <h1 v-if="!answerShow" class="false">
-        不正解・・・
-      </h1>
-      <h1 class="answer">
-        正解：{{ correctAnswers }}
-      </h1>
-      <h2>
-        解説：{{ selectExplain }}
-      </h2>
-      <div>
-        <router-link to="/question" class="btn_to_question">
-          <button v-if="show" @click="question()">
-            次の問題へ
-          </button>
-        </router-link>
-        <router-link to="/results" class="btn_to_question">
-          <button v-if="!show" @click="question()">
-            結果画面へ
-          </button>
-        </router-link>
-      </div>
+      <router-link to="/results" class="btn_to_question">
+        <button v-if="!show" @click="question()">
+          結果画面へ
+        </button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -52,7 +33,8 @@ export default {
     return {
       show: true,
       answerShow: true,
-      answer: this.$store.state.answer.answer
+      answer: this.$store.state.answer.answer,
+      correctAnswer: this.$store.state.answer.contents[0].correctAnswer
     }
   },
   computed: {
@@ -67,14 +49,15 @@ export default {
     }
   },
   created () {
-    return this.getAnswer()
+    this.isShow()
+    setTimeout(this.getAnswer, 1000)
   },
 
   methods: {
     // 次の問題を出力する
     question () {
       this.$store.dispatch('getQuestion')
-      // this.$store.commit('clearAnswer')
+      this.$store.commit('clearAnswer')
     },
 
     // 全ての問題を回答したらボタンを入れ替える
@@ -87,21 +70,15 @@ export default {
 
     // 正解かどうかを判断し、正解ならばカウントする
     getAnswer () {
-      if (this.correctAnswers !== this.answer) {
+      console.log('回答したものは' + this.answer)
+      console.log('正解は' + this.correctAnswer)
+      if (this.correctAnswer !== this.answer) {
         this.answerShow = false
       } else {
         this.answerShow = true
         this.$store.commit('addCount')
       }
     }
-    // confilmAnswer () {
-    //   if (this.correctAnswers !== this.answer) {
-    //     this.answerShow = false
-    //   } else {
-    //     this.answerShow = true
-    //     this.$store.commit('addCount')
-    //   }
-    // }
   }
 }
 </script>
