@@ -1,16 +1,10 @@
 <template>
-  <div class="results">
-    <h1>結果発表！！</h1>
-    <div class="result">
-      <h2>あなたの結果は</h2>
-      <h3>{{ result }} %</h3>
-      <h3>{{ comment }}</h3>
-    </div>
-    <router-link to="/">
-      <button class="button" @click="initCount()">
-        スタートに戻る
-      </button>
-    </router-link>
+  <div>
+    <h1 class="title"> 結果発表！！！</h1>
+    <h2 class="result"> あなたの結果は {{ result }} %</h2>
+    <button @click="backTop()">
+      スタートに戻る
+    </button>
   </div>
 </template>
 
@@ -18,8 +12,7 @@
 export default {
   data () {
     return {
-      result: ' ',
-      comment: ' '
+      result: ' '
     }
   },
   computed: {
@@ -34,32 +27,37 @@ export default {
     isResults () {
       const count = this.$store.state.answer.correctCount
       this.result = count / 5 * 100
-      if (count === 5) {
-        this.comment = '天才かよ！！'
-      } else if (count >= 3 && count < 5) {
-        this.comment = 'あと少し！！'
-      } else {
-        this.comment = 'くそ！！'
-      }
     },
-    initCount () {
+
+    backTop () {
       this.$store.commit('initCount')
+      this.$router.push('/')
     }
   }
 }
 </script>
 
 <style scoped>
-  h1 {
-    font-size:100px;
-    margin: 0 auto;
-  }
-  .result {
-    margin: 0 auto;
-  }
-  .button {
-    padding: 20px;
-    margin: 0 auto;
-  }
+.title{
+  font-weight: bold;
+  font-size: 50px;
+  color: black;
+  padding-top: 40px;
+}
+.result {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+button {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  background-color: black;
+  transition: .4s;
+  margin: 0 5vw;
+}
 
 </style>

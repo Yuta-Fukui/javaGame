@@ -1,17 +1,20 @@
 <template>
-  <div v-if="loaded" class="answer">
-    <h1>
+  <div v-if="loaded">
+    <h1 class="title">
       {{ comment }}
     </h1>
     <h1 class="answer">
       正解：{{ correctAnswers }}
     </h1>
-    <h2>
+    <h2 class="explain">
       解説：{{ selectExplain }}
     </h2>
-    <template>
+    <template class="">
         <button @click="question()" class="btn_to_question">
           {{ btn }}
+        </button>
+        <button @click="backTop()">
+          Topへ戻る
         </button>
     </template>
   </div>
@@ -81,13 +84,36 @@ export default {
       this.isShow()
 
       this.comment = this.answerShow ? '正解' : '不正解'
+    },
+
+    backTop () {
+      this.$store.commit('initCount')
+      this.$router.push('/')
     }
   }
 }
 </script>
 
 <style scoped>
+.title{
+  font-weight: bold;
+  font-size: 50px;
+  color: black;
+  padding-top: 40px;
+}
 .answer {
-  background-color: #FF9999;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+button {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  background-color: black;
+  transition: .4s;
+  margin: 0 5vw;
 }
 </style>
