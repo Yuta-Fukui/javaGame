@@ -6,11 +6,9 @@
     <p class="explain">
       Team20の４択クイズを作ろうとしています。
     </p>
-    <router-link to="/question">
       <button @click="question()">
         START!!!
       </button>
-    </router-link>
   </div>
 </template>
 
@@ -19,6 +17,9 @@ export default {
   methods: {
     question () {
       this.$store.dispatch('getQuestion')
+        .then(() => {
+          this.$router.push('/question')
+        })
     }
   }
 }

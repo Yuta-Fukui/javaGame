@@ -26,9 +26,6 @@ export default {
     // 正解数を数える
     addCount (state) {
       state.correctCount++
-    },
-    clearAnswer (state) {
-      state.contents[0].correctAnswer = ' '
     }
   },
   actions: {

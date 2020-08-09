@@ -9,20 +9,11 @@
     <h2>
       解説：{{ selectExplain }}
     </h2>
-    <div v-if="show">
-      <router-link to="/question" class="btn_to_question">
-        <button @click="question()">
-          次の問題へ
+    <template>
+        <button @click="question()" class="btn_to_question">
+          {{ btn }}
         </button>
-      </router-link>
-    </div>
-    <div v-else>
-      <router-link to="/results" class="btn_to_question">
-        <button @click="question()">
-          結果画面へ
-        </button>
-      </router-link>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -34,7 +25,8 @@ export default {
       answerShow: true,
       correctAnswer: '',
       answer: '',
-      comment: ''
+      comment: '',
+      btn: '次の問題へ'
     }
   },
   computed: {
@@ -56,7 +48,13 @@ export default {
     // 次の問題を出力する
     question () {
       this.$store.dispatch('getQuestion')
-      this.$store.commit('clearAnswer')
+        .then(() => {
+          if (this.show === true) {
+            this.$router.push('/question')
+          } else {
+            this.$router.push('/results')
+          }
+        })
     },
 
     // 全ての問題を回答したらボタンを入れ替える
@@ -64,6 +62,7 @@ export default {
       const count = this.$store.state.question.count
       if (count === 5) {
         this.show = !this.show
+        this.btn = this.show ? '次の問題へ' : '結果画面へ'
       }
     },
 
@@ -71,6 +70,7 @@ export default {
     getAnswer () {
       this.correctAnswer = this.$store.state.answer.contents[0].correctAnswer
       this.answer = this.$store.state.answer.answer
+
       if (this.correctAnswer !== this.answer) {
         this.answerShow = false
       } else {
@@ -80,12 +80,7 @@ export default {
 
       this.isShow()
 
-      // console.log('answerShow:' + this.show)
-      console.log('正しい答えは' + this.correctAnswer)
-      console.log('あなたの答えは' + this.answer)
-
-      this.answerShow ? this.comment = '正解' : this.comment = '不正解'
-      return this.comment
+      this.comment = this.answerShow ? '正解' : '不正解'
     }
   }
 }
