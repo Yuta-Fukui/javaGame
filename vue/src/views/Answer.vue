@@ -70,8 +70,6 @@ export default {
 
     // 正解かどうかを判断し、正解ならばカウントする
     getAnswer () {
-      // console.log('回答したものは' + this.answer)
-      // console.log('正解は' + this.correctAnswer)
       if (this.correctAnswer !== this.answer) {
         this.answerShow = false
       } else {
