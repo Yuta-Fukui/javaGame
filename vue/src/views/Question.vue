@@ -1,6 +1,6 @@
 <template>
-  <div v-if="loaded" class="question">
-    <h1>問題{{ isCounted() }}</h1>
+  <div v-if="loaded">
+    <h1 class="title">問題{{ isCounted() }}</h1>
     <p class="question">
       {{ selectQuestion }}
     </p>
@@ -9,6 +9,9 @@
         {{ item }}
       </button>
     </template>
+    <button @click="backTop()">
+          Topへ戻る
+    </button>
   </div>
 </template>
 
@@ -43,11 +46,42 @@ export default {
       // 次の画面に回答した答えを持っていく
       this.$store.commit('setAnswer', selectedAnswer)
     },
+
     // 何回問題を解いたかを数える
     isCounted () {
       this.count = this.$store.state.question.count
       return this.count
+    },
+
+    backTop () {
+      this.$store.commit('initCount')
+      this.$router.push('/')
     }
   }
 }
 </script>
+
+<style>
+.title{
+  font-weight: bold;
+  font-size: 50px;
+  color: black;
+  padding-top: 40px;
+}
+.question {
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 5vw;
+}
+
+button {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  background-color: black;
+  transition: .4s;
+  margin:3vw 5vw 0 5vw;
+}
+</style>
