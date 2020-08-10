@@ -42,14 +42,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.results {
-  text-align: center;
-}
-
-.result {
-  font-weight: bold;
-  font-size: 30px;
-}
-</style>
