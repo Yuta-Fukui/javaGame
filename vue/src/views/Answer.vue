@@ -1,22 +1,20 @@
 <template>
-  <div v-if="loaded">
+  <div class="answers" v-if="loaded">
     <h1 class="title">
       {{ comment }}
     </h1>
+    <div class="space"></div>
     <h1 class="answer">
       正解：{{ correctAnswers }}
     </h1>
     <h2 class="explain">
       解説：{{ selectExplain }}
     </h2>
-    <template class="">
-        <button @click="question()" class="btn_to_question">
-          {{ btn }}
-        </button>
-        <button @click="backTop()">
-          Topへ戻る
-        </button>
-    </template>
+    <div>
+      <button id="btn" @click="question()">
+        {{ btn }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -83,11 +81,12 @@ export default {
 
       this.isShow()
 
-      this.comment = this.answerShow ? '正解' : '不正解'
+      this.comment = this.answerShow ? '正解!!!' : '不正解・・・'
     },
 
     backTop () {
       this.$store.commit('initCount')
+      this.$store.commit('initCorrectCount')
       this.$router.push('/')
     }
   }
@@ -95,25 +94,12 @@ export default {
 </script>
 
 <style scoped>
-.title{
-  font-weight: bold;
-  font-size: 50px;
-  color: black;
-  padding-top: 40px;
+.answers {
+  text-align: center;
 }
+
 .answer {
   font-weight: bold;
   font-size: 30px;
-}
-
-button {
-  display: inline-block;
-  padding: 7px 20px;
-  border-radius: 25px;
-  text-decoration: none;
-  color: #FFF;
-  background-color: black;
-  transition: .4s;
-  margin: 0 5vw;
 }
 </style>

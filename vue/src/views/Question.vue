@@ -1,17 +1,19 @@
 <template>
-  <div v-if="loaded">
-    <h1 class="title">問題{{ isCounted() }}</h1>
+  <div id="questions" v-if="loaded">
+    <h1 class="title">
+      問題{{ isCounted() }}
+    </h1>
     <p class="question">
       {{ selectQuestion }}
     </p>
-    <template v-for="(item, index) in computedChoices">
-      <button :key="index" @click="answer(item)">
-        {{ item }}
-      </button>
-    </template>
-    <button @click="backTop()">
-          Topへ戻る
-    </button>
+    <div class="space"></div>
+    <div>
+      <template id="question-btn" v-for="(item, index) in computedChoices">
+        <button id="btn" :key="index" @click="answer(item)">
+          {{ item }}
+        </button>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -55,6 +57,7 @@ export default {
 
     backTop () {
       this.$store.commit('initCount')
+      this.$store.commit('initCorrectCount')
       this.$router.push('/')
     }
   }
@@ -62,26 +65,41 @@ export default {
 </script>
 
 <style>
-.title{
-  font-weight: bold;
-  font-size: 50px;
-  color: black;
-  padding-top: 40px;
+.questions {
+  text-align: center;
 }
+
 .question {
   font-weight: bold;
   font-size: 30px;
   margin-top: 5vw;
+  text-align: center;
 }
 
-button {
-  display: inline-block;
-  padding: 7px 20px;
-  border-radius: 25px;
-  text-decoration: none;
-  color: #FFF;
-  background-color: black;
-  transition: .4s;
-  margin:3vw 5vw 0 5vw;
+#btn {
+    text-align: center;
+    width: 300px;
+    border: none;
+    padding: 15px 20px;
+    margin: 15px auto;
+    letter-spacing: 1px;
+    font-weight: 700;
+    display: block;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    background: #f78d1b;
+    color: #fff;
+    box-shadow: 0 6px #b45f0a;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    border-radius: 5px;
+}
+
+.space {
+  height: 5vw;
 }
 </style>

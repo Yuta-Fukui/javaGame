@@ -6,9 +6,9 @@
     <p class="explain">
       Team20の４択クイズ!!!
     </p>
-      <button class="btn" @click="question()">
-        START!!!
-      </button>
+    <button class="start-btn" @click="question()">
+      START!!!
+    </button>
   </div>
 </template>
 
@@ -26,28 +26,21 @@ export default {
 </script>
 
 <style>
+.top {
+  text-align: center;
+}
+
 .title{
   font-weight: bold;
   font-size: 50px;
-  color: black;
   padding-top: 40px;
+  color: #2c3e50;
+  text-align: center;
 }
+
 .explain {
   font-weight: bold;
   font-size: 30px;
 }
 
-.btn {
-  display: inline-block;
-  padding: 7px 20px;
-  border-radius: 25px;
-  text-decoration: none;
-  color: #FFF;
-  background-color: black;
-  transition: .4s;
-}
-
-.btn:hover {
-  background-color: black;
-}
 </style>

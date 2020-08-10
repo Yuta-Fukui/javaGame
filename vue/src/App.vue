@@ -1,26 +1,119 @@
 <template>
   <div id="app">
-    <div id="nav">
-    </div>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+      <button class="back start-btn" @click="backTop()">
+      スタートに戻る
+      </button>
+    <div id="nav" />
     <router-view />
   </div>
 </template>
 
+<script>
+export default {
+  methods: {
+    backTop () {
+      this.$store.commit('initCount')
+      this.$store.commit('initCorrectCount')
+      this.$router.push('/')
+    }
+  }
+}
+</script>>
+
 <style>
 #app {
   color: #2c3e50;
-  height: 400px;
-  background: linear-gradient(-45deg, rgba(246, 255, 0, .8), rgba(255, 0, 161, .8));
-  background-size: cover;
+  height: 100%;
+  width: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  margin: 10vw;
 }
 
-#nav a {
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+
+#nav {
   color: #2c3e50;
   font-weight: bold;
+  display: flex;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+
+.start-btn {
+  background:#FFC107;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  border-radius: 5vw;
+}
+
+.start-btn:hover{
+  background:#fff;
+  color:#FFC107;
+}
+
+.start-btn:before,.start-btn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #FFC107;
+  transition:400ms ease all;
+}
+
+.start-btn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+
+.start-btn:hover:before,.start-btn:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+.back {
+  padding: 1vw;
+  font-size: 10px;
+  border-radius: 5vw;
 }
 </style>

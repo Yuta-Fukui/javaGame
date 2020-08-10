@@ -1,8 +1,12 @@
 <template>
-  <div>
-    <h1 class="title"> 結果発表！！！</h1>
-    <h2 class="result"> あなたの結果は {{ result }} %</h2>
-    <button @click="backTop()">
+  <div class="results">
+    <h1 class="title">
+      結果発表！！！
+    </h1>
+    <h2 class="result">
+      あなたの結果は {{ result }} %
+    </h2>
+    <button class=" start-btn" @click="backTop()">
       スタートに戻る
     </button>
   </div>
@@ -31,6 +35,7 @@ export default {
 
     backTop () {
       this.$store.commit('initCount')
+      this.$store.commit('initCorrectCount')
       this.$router.push('/')
     }
   }
@@ -38,26 +43,12 @@ export default {
 </script>
 
 <style scoped>
-.title{
-  font-weight: bold;
-  font-size: 50px;
-  color: black;
-  padding-top: 40px;
+.results {
+  text-align: center;
 }
+
 .result {
   font-weight: bold;
   font-size: 30px;
 }
-
-button {
-  display: inline-block;
-  padding: 7px 20px;
-  border-radius: 25px;
-  text-decoration: none;
-  color: #FFF;
-  background-color: black;
-  transition: .4s;
-  margin: 0 5vw;
-}
-
 </style>
