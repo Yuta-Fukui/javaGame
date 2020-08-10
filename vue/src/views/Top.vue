@@ -6,9 +6,11 @@
     <p class="explain">
       Team20の４択クイズ!!!
     </p>
-    <p class="explain"> 今回の設問数は{{ question }}問でチャレンジ！！ </p>
-    <div class="btn">
-      <select v-model="question">
+    <p class="explain">
+      今回の設問数は{{ question }}問でチャレンジ！！
+    </p>
+    <div class="btn-list">
+      <select v-model="question" class="list">
         <option v-for="(item, index) in checkboxItems" :key="index" :value="checkboxItems[index]">
           {{ item }}
         </option>
@@ -59,9 +61,30 @@ export default {
   font-size: 30px;
 }
 
-.btn {
-  margin: 0 auto;
-  margin-bottom: 1vw;
+.btn-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.list {
+  margin-right: 2vw;
+  text-align: center;
+  width: 100px;
+  border: none;
+  padding: 15px 20px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  display: block;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  background: #f78d1b;
+  color: #fff;
+  border-radius: 5px;
+  opacity: 1;
+  font-size: 2vw;
+}
 </style>

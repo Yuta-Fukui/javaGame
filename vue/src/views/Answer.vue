@@ -1,9 +1,9 @@
 <template>
-  <div class="answers" v-if="loaded">
+  <div v-if="loaded" class="answers">
     <h1 class="title">
       {{ comment }}
     </h1>
-    <div class="space"></div>
+    <div class="space" />
     <h1 class="answer">
       正解：{{ correctAnswers }}
     </h1>

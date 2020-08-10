@@ -6,10 +6,10 @@
     <html>
       <body>
         <button class="back start-btn" @click="backTop()">
-        スタートに戻る
+          TOPへ
         </button>
-      <div id="nav" />
-      <router-view />
+        <div id="nav" />
+        <router-view />
       </body>
     </html>
   </div>
@@ -74,12 +74,13 @@ export default {
 }
 
 .start-btn {
-  background:#FFC107;
+  background:#f78d1b;
   color:#fff;
   border:none;
   position:relative;
   height:60px;
   font-size:1.6em;
+  font-weight: bold;
   padding:0 2em;
   cursor:pointer;
   transition:800ms ease all;
@@ -89,7 +90,7 @@ export default {
 
 .start-btn:hover {
   background:#fff;
-  color:#FFC107;
+  color: #f78d1b;
 }
 
 .start-btn:before,.start-btn:after {
@@ -119,52 +120,5 @@ export default {
   padding: 1vw;
   font-size: 10px;
   border-radius: 5vw;
-}
-
-body {
-  height: 100%;
-  margin: 0px;
-  background-image:
-    url('https://github.com/Kageetai/mario-background-parallax/blob/master/img/mario.gif?raw=true'),
-    url('https://github.com/Kageetai/mario-background-parallax/blob/master/img/ground.png?raw=true'),
-    url('https://github.com/Kageetai/mario-background-parallax/blob/master/img/bushes.png?raw=true'),
-    url('https://raw.githubusercontent.com/Kageetai/mario-background-parallax/master/img/back.png?raw=true');
-  background-color: #F8E0B0;
-  background-repeat:
-    no-repeat,
-    repeat-x,
-    repeat-x,
-    repeat-x;
-  background-position:
-    left 30% bottom 22px,
-    left 0px bottom 0px,
-    left 0px bottom 22px,
-    left 0px bottom 0px;
-  animation: back 15s infinite linear;
-}
-
-@keyframes back {
-  0% {
-    background-position:
-      left 30% bottom 22px,
-      left 0px bottom 0px,
-      left 0px bottom 22px,
-      left 0px bottom 0px;
-  }
-
-  50% {
-    background-position:
-      left 50% bottom 22px,
-      left (-(68px * 12)) bottom 0px,
-      left (-(508px * 1)) bottom 22px,
-      left (-(512px / 2)) bottom 0px;
-  }
-  100% {
-    background-position:
-      left 30% bottom 22px,
-      left (-(68px * 24)) bottom 0px,
-      left (-(508px * 2)) bottom 22px,
-      left (-512px) bottom 0px;
-  }
 }
 </style>

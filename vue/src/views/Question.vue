@@ -1,14 +1,14 @@
 <template>
-  <div id="questions" v-if="loaded">
+  <div v-if="loaded" id="questions">
     <h1 class="title">
       問題{{ isCounted() }}
     </h1>
     <p class="question">
       {{ selectQuestion }}
     </p>
-    <div class="space"></div>
+    <div class="space" />
     <div>
-      <template id="question-btn" v-for="(item, index) in computedChoices">
+      <template v-for="(item, index) in computedChoices" id="question-btn">
         <button id="btn" :key="index" @click="answer(item)">
           {{ item }}
         </button>
@@ -72,7 +72,6 @@ export default {
 .question {
   font-weight: bold;
   font-size: 30px;
-  margin-top: 5vw;
   text-align: center;
 }
 
@@ -105,6 +104,6 @@ export default {
 }
 
 .space {
-  height: 5vw;
+  height: 3vw;
 }
 </style>
