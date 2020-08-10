@@ -6,7 +6,7 @@
     <h2 class="result">
       あなたの結果は {{ result }} %
     </h2>
-    <button class=" start-btn" @click="backTop()">
+    <button class="start-btn" @click="backTop()">
       スタートに戻る
     </button>
   </div>
@@ -30,7 +30,8 @@ export default {
   methods: {
     isResults () {
       const count = this.$store.state.answer.correctCount
-      this.result = count / 5 * 100
+      const amountQuestions = this.$store.state.question.amountQuestion
+      this.result = Math.floor(count / amountQuestions) * 100
     },
 
     backTop () {

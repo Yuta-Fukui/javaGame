@@ -19,8 +19,17 @@ public class JavaGame2 {
 	@Autowired
 	private QuestionService2 qs;
 
-	@GetMapping(value = "/question")
-	public ResponseEntity<Question2> question() throws IOException {
+	@GetMapping(value = "/getQuestion")
+	public ResponseEntity<Question2> getQuestion() throws IOException {
+
+		// get Question
+		Question2 list = qs.getQuestion();
+
+		return ResponseEntity.ok(list);
+	}
+
+	@GetMapping(value = "/updatedQuestion")
+	public ResponseEntity<Question2> updatedQuestion() throws IOException {
 
 		// get Question
 		Question2 list = qs.updatedQuestion();
