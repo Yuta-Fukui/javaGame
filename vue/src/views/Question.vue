@@ -97,6 +97,11 @@ export default {
     -moz-transition: none;
     transition: none;
     border-radius: 5px;
+    opacity: 0.8;
+}
+
+#btn:hover {
+  opacity: 1;
 }
 
 .space {

@@ -61,7 +61,8 @@ export default {
     // 全ての問題を回答したらボタンを入れ替える
     isShow () {
       const count = this.$store.state.question.count
-      if (count === 5) {
+      const amountQuestions = this.$store.state.question.amountQuestion
+      if (count === amountQuestions) {
         this.show = !this.show
         this.btn = this.show ? '次の問題へ' : '結果画面へ'
       }

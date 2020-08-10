@@ -3,7 +3,6 @@ package com.lifegraph.team20.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class QuestionService2 {
 
 	public int count = 0;
 
-	public void getQuestions() {
+	public Question2 getQuestion() {
 		// make ArrayList
 		List<Question2> getQuestion = new ArrayList<Question2>();
 		// insert into list
@@ -33,31 +32,32 @@ public class QuestionService2 {
 		// shuffle object
 		Collections.shuffle(getQuestion);
 
-		// limited the number of Questions
-		List<Question2> selectQuestions =getQuestion.stream()
-				.limit(5)
-				.collect(Collectors.toList());
-		list.addAll(selectQuestions);
+//		// limited the number of Questions
+//		List<Question2> selectQuestions =getQuestion.stream()
+//				.limit(5)
+//				.collect(Collectors.toList());
+		list.addAll(getQuestion);
+		Question2 selectQuestion = list.get(0);
+		return selectQuestion;
 
 	}
 
 	public Question2 updatedQuestion() {
-		if(list.isEmpty()) {
-			this.getQuestions();
-			Question2 selectQuestion = list.get(0);
-//			for(Question2 list2 : list) {
-//				System.out.println(list2.toString());
-//			}
-//			System.out.println("-----------------");
-			return selectQuestion;
-		} else {
+//		if(list.isEmpty()) {
+//			this.getQuestions();
+//			Question2 selectQuestion = list.get(0);
+////			for(Question2 list2 : list) {
+////				System.out.println(list2.toString());
+////			}
+////			System.out.println("-----------------");
+//			return selectQuestion;
+//		} else {
 			list.remove(0);
 			Collections.shuffle(list);
 			Question2 selectQuestion = list.get(0);
 
 			return selectQuestion;
 		}
-	}
 
 	public List<Answer> updatedAnswer(Long questionId) {
 		Long id = questionId;

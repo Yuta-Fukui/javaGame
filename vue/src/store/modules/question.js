@@ -10,7 +10,8 @@ export default {
     loaded: false,
     count: 0,
     questionStatement: '',
-    questionId: ''
+    questionId: '',
+    amountQuestion: 0
   },
   mutations: {
     question (state, payload) {
@@ -22,6 +23,9 @@ export default {
     },
     initCount (state) {
       state.count = 0
+    },
+    setQuestions (state, params) {
+      state.amountQuestion = params
     }
   },
   actions: {
