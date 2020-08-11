@@ -1,14 +1,16 @@
 <template>
-  <div class="top">
+  <div class="top-title">
     <div class="title">
       気軽GAMES
     </div>
     <p class="explain">
       Team20の４択クイズ!!!
     </p>
-    <p class="explain"> 今回の設問数は{{ question }}問でチャレンジ！！ </p>
-    <div class="btn">
-      <select v-model="question">
+    <p class="explain">
+      今回は{{ question }}問でチャレンジ！！
+    </p>
+    <div class="btn-list">
+      <select v-model="question" class="list">
         <option v-for="(item, index) in checkboxItems" :key="index" :value="checkboxItems[index]">
           {{ item }}
         </option>
@@ -40,28 +42,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.top {
-  text-align: center;
-}
-
-.title{
-  font-weight: bold;
-  font-size: 50px;
-  padding-top: 40px;
-  color: #2c3e50;
-  text-align: center;
-}
-
-.explain {
-  font-weight: bold;
-  font-size: 30px;
-}
-
-.btn {
-  margin: 0 auto;
-  margin-bottom: 1vw;
-}
-
-</style>

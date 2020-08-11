@@ -1,15 +1,15 @@
 <template>
-  <div id="questions" v-if="loaded">
+  <div v-if="loaded" class="top-title">
     <h1 class="title">
       問題{{ isCounted() }}
     </h1>
     <p class="question">
       {{ selectQuestion }}
     </p>
-    <div class="space"></div>
+    <div class="space" />
     <div>
-      <template id="question-btn" v-for="(item, index) in computedChoices">
-        <button id="btn" :key="index" @click="answer(item)">
+      <template v-for="item in computedChoices" id="question-btn">
+        <button id="btn" :key="item" @click="answer(item)">
           {{ item }}
         </button>
       </template>
@@ -63,48 +63,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.questions {
-  text-align: center;
-}
-
-.question {
-  font-weight: bold;
-  font-size: 30px;
-  margin-top: 5vw;
-  text-align: center;
-}
-
-#btn {
-    text-align: center;
-    width: 300px;
-    border: none;
-    padding: 15px 20px;
-    margin: 15px auto;
-    letter-spacing: 1px;
-    font-weight: 700;
-    display: block;
-    outline: none;
-    position: relative;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    background: #f78d1b;
-    color: #fff;
-    box-shadow: 0 6px #b45f0a;
-    -webkit-transition: none;
-    -moz-transition: none;
-    transition: none;
-    border-radius: 5px;
-    opacity: 0.8;
-}
-
-#btn:hover {
-  opacity: 1;
-}
-
-.space {
-  height: 5vw;
-}
-</style>

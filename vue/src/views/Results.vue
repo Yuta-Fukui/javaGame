@@ -1,11 +1,14 @@
 <template>
-  <div class="results">
+  <div class="top-title">
     <h1 class="title">
       結果発表！！！
     </h1>
     <h2 class="result">
       あなたの結果は {{ result }} %
     </h2>
+    <p class="result">
+      {{ comment }}
+    </p>
     <button class="start-btn" @click="backTop()">
       スタートに戻る
     </button>
@@ -16,7 +19,8 @@
 export default {
   data () {
     return {
-      result: ' '
+      result: ' ',
+      comment: ' '
     }
   },
   computed: {
@@ -31,7 +35,17 @@ export default {
     isResults () {
       const count = this.$store.state.answer.correctCount
       const amountQuestions = this.$store.state.question.amountQuestion
-      this.result = Math.floor(count / amountQuestions) * 100
+      const score = count / amountQuestions * 100
+      this.result = Math.floor(score)
+      if (this.result === 100) {
+        this.comment = 'これで君も20マスターだ!!!'
+      } else if (this.result >= 80) {
+        this.comment = 'あと少し！次こそ100%だ！'
+      } else if (this.result >= 50) {
+        this.comment = '諦めないで、もう一度チャレンジだ！'
+      } else {
+        this.comment = 'あれれ？？今日は体調悪いのかな？'
+      }
     },
 
     backTop () {
@@ -42,14 +56,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.results {
-  text-align: center;
-}
-
-.result {
-  font-weight: bold;
-  font-size: 30px;
-}
-</style>
