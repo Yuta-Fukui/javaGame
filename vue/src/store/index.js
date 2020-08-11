@@ -6,10 +6,6 @@ import axios from 'axios'
 
 require('@/assets/sass/background.scss')
 require('@/assets/sass/common.scss')
-require('@/assets/sass/answer.scss')
-require('@/assets/sass/question.scss')
-require('@/assets/sass/results.scss')
-require('@/assets/sass/top.scss')
 
 Vue.use(Vuex)
 

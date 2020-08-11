@@ -1,10 +1,10 @@
 <template>
-  <div v-if="loaded" class="answers">
+  <div v-if="loaded" class="top-title">
     <h1 class="title">
       {{ comment }}
     </h1>
     <div class="space" />
-    <h1 class="answer">
+    <h1 class="result">
       正解：{{ correctAnswers }}
     </h1>
     <h2 class="explain">
@@ -81,11 +81,12 @@ export default {
       }
 
       this.isShow()
-
+      // 回答によって正解、不正解を表示する
       this.comment = this.answerShow ? '正解!!!' : '不正解・・・'
     },
 
     backTop () {
+      // 初期化してtopに戻る
       this.$store.commit('initCount')
       this.$store.commit('initCorrectCount')
       this.$router.push('/')

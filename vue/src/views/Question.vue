@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loaded" id="questions">
+  <div v-if="loaded" class="top-title">
     <h1 class="title">
       問題{{ isCounted() }}
     </h1>
@@ -8,8 +8,8 @@
     </p>
     <div class="space" />
     <div>
-      <template v-for="(item, index) in computedChoices" id="question-btn">
-        <button id="btn" :key="index" @click="answer(item)">
+      <template v-for="item in computedChoices" id="question-btn">
+        <button id="btn" :key="item" @click="answer(item)">
           {{ item }}
         </button>
       </template>

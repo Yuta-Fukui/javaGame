@@ -1,5 +1,5 @@
 <template>
-  <div class="top">
+  <div class="top-title">
     <div class="title">
       気軽GAMES
     </div>
@@ -7,7 +7,7 @@
       Team20の４択クイズ!!!
     </p>
     <p class="explain">
-      今回の設問数は{{ question }}問でチャレンジ！！
+      今回は{{ question }}問でチャレンジ！！
     </p>
     <div class="btn-list">
       <select v-model="question" class="list">

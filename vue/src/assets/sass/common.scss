@@ -13,6 +13,18 @@
   display: flex;
 }
 
+.top-title {
+  text-align: center;
+  background: rgba(255,255,255,0.5);
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 1vw;
+  border-radius: 2vw;
+  margin-top: 5vw;
+  max-width: 40vw;
+}
+
 .start-btn {
   background:#f78d1b;
   color:#fff;
@@ -65,14 +77,18 @@
 .title{
   font-weight: bold;
   font-size: 50px;
-  padding-top: 40px;
   color: #2c3e50;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .explain {
   font-weight: bold;
   font-size: 30px;
+  max-width: 30vw;
+  margin: 0 auto;
+  margin-bottom: 1.5vw;
 }
 
 #btn {
@@ -103,7 +119,45 @@
   opacity: 1;
 }
 
-.space {
-  height: 3vw;
+.result {
+  font-weight: bold;
+  font-size: 30px;
 }
 
+.question {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  max-width: 30vw;
+  margin: 0 auto;
+  margin-top: 1.5vw;
+  margin-bottom: 1.5vw;
+}
+
+.btn-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1 !important;
+}
+
+.list {
+  margin-right: 2vw;
+  text-align: center;
+  width: 100px;
+  border: none;
+  padding: 15px 20px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  display: block;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  background: #f78d1b;
+  color: #fff;
+  border-radius: 5px;
+  opacity: 1;
+  font-size: 2vw;
+}
