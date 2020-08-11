@@ -1,7 +1,7 @@
 <template>
-  <div class="top-title">
+  <div class="title-top">
     <div class="title">
-      気軽GAMES
+      お気軽クイズ！！
     </div>
     <p class="explain">
       Team20の４択クイズ!!!
@@ -30,7 +30,9 @@ export default {
       checkboxItems: [5, 10, 15, 20]
     }
   },
+
   methods: {
+    // 問題を出力する
     questions () {
       const amountQuestions = this.question
       this.$store.commit('setQuestions', amountQuestions)

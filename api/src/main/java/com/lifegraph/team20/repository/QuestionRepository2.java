@@ -20,7 +20,6 @@ public class QuestionRepository2  {
 	private JdbcTemplate db;
 
 	public List<Question2> selectQuestions () {
-//		final String sql = "SELECT * FROM `Question` ORDER BY RAND() LIMIT 5";
 		final String sql = "SELECT * FROM Question";
 		return db.query(sql, new RowMapper<Question2>() {
 			public Question2 mapRow(ResultSet rs, int RowNum) throws SQLException {
@@ -36,15 +35,7 @@ public class QuestionRepository2  {
 			public Answer mapRow(ResultSet rs, int RowNum) throws SQLException {
 				return new Answer(rs.getLong("id"),rs.getLong("questionId"),
 						rs.getString("correctAnswer"),rs.getString("explanation"));
-
 			}
 		});
 	}
-
-	// public Boolean confilmedAnswer(Long questionId,String correctAnswer) {
-	// 	final String sql = "select count(*) from Correct_Answer where questionId =" + questionId + "and correctAnswer =" + correctAnswer;
-	// 	Integer count = db.queryForObject(sql, Integer.class);
-	//       return 1 <= count;
-
-	// }
 }

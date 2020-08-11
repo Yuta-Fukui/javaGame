@@ -7,7 +7,9 @@ Vue.use(Vuex)
 export default {
   state: {
     contents: {},
+    // 画面遷移のタイミングを操作する
     loaded: false,
+    // 正解数をカウントする
     correctCount: 0,
 
     // 画面で回答した値を受け取る箱
@@ -19,14 +21,17 @@ export default {
       state.contents = payload
       state.loaded = true
     },
+
     // 画面で選択された解答を受け取る
     setAnswer (state, payload) {
       state.answer = payload
     },
+
     // 正解数を数える
     addCount (state) {
       state.correctCount++
     },
+    // 初期化
     initCorrectCount (state) {
       state.correctCount = 0
     }

@@ -1,5 +1,5 @@
 <template>
-  <div class="top-title">
+  <div class="title-top">
     <h1 class="title">
       結果発表！！！
     </h1>
@@ -23,14 +23,17 @@ export default {
       comment: ' '
     }
   },
+
   computed: {
     getCount () {
       return this.$store.state.answer.correctCount
     }
   },
+
   created () {
     this.isResults()
   },
+
   methods: {
     isResults () {
       const count = this.$store.state.answer.correctCount

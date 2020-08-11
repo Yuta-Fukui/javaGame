@@ -16,6 +16,7 @@ import com.lifegraph.team20.service.QuestionService2;
 
 @Controller
 public class JavaGame2 {
+
 	@Autowired
 	private QuestionService2 qs;
 
@@ -31,7 +32,7 @@ public class JavaGame2 {
 	@GetMapping(value = "/updatedQuestion")
 	public ResponseEntity<Question2> updatedQuestion() throws IOException {
 
-		// get Question
+		// update Question
 		Question2 list = qs.updatedQuestion();
 
 		return ResponseEntity.ok(list);
@@ -40,6 +41,7 @@ public class JavaGame2 {
 	@GetMapping(value = "/answer/{questionId}")
 	public ResponseEntity<List<Answer>> answer(@PathVariable("questionId") Long questionId) throws IOException {
 
+		// get answer
 		List<Answer> answer = qs.updatedAnswer(questionId);
 
 		return ResponseEntity.ok(answer);

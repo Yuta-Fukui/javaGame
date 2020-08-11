@@ -19,23 +19,20 @@ public class QuestionService2 {
 	private QuestionRepository2 qr;
 
 	List<Question2> list = new ArrayList<Question2>();
-//	List<Question2> list;
 
 	public int count = 0;
 
 	public Question2 getQuestion() {
 		// make ArrayList
 		List<Question2> getQuestion = new ArrayList<Question2>();
+
 		// insert into list
 		getQuestion = qr.selectQuestions();
 
 		// shuffle object
 		Collections.shuffle(getQuestion);
 
-//		// limited the number of Questions
-//		List<Question2> selectQuestions =getQuestion.stream()
-//				.limit(5)
-//				.collect(Collectors.toList());
+		// set to list
 		list.addAll(getQuestion);
 		Question2 selectQuestion = list.get(0);
 		return selectQuestion;
@@ -43,24 +40,21 @@ public class QuestionService2 {
 	}
 
 	public Question2 updatedQuestion() {
-//		if(list.isEmpty()) {
-//			this.getQuestions();
-//			Question2 selectQuestion = list.get(0);
-////			for(Question2 list2 : list) {
-////				System.out.println(list2.toString());
-////			}
-////			System.out.println("-----------------");
-//			return selectQuestion;
-//		} else {
-			list.remove(0);
-			Collections.shuffle(list);
-			Question2 selectQuestion = list.get(0);
+		// remove question
+		list.remove(0);
 
-			return selectQuestion;
-		}
+		// shuffle object
+		Collections.shuffle(list);
+
+		// set to list
+		Question2 selectQuestion = list.get(0);
+		return selectQuestion;
+	}
 
 	public List<Answer> updatedAnswer(Long questionId) {
 		Long id = questionId;
+
+		// get answer
 		List<Answer> answer = qr.selectAnswer(id);
 		return answer;
 	}

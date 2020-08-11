@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loaded" class="top-title">
+  <div v-if="loaded" class="title-top">
     <h1 class="title">
       問題{{ isCounted() }}
     </h1>
@@ -44,7 +44,6 @@ export default {
         .then(() => {
           this.$router.push('/answer')
         })
-
       // 次の画面に回答した答えを持っていく
       this.$store.commit('setAnswer', selectedAnswer)
     },
@@ -55,6 +54,7 @@ export default {
       return this.count
     },
 
+    // topに戻る
     backTop () {
       this.$store.commit('initCount')
       this.$store.commit('initCorrectCount')

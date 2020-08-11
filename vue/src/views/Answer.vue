@@ -1,15 +1,16 @@
 <template>
-  <div v-if="loaded" class="top-title">
-    <h1 class="title">
+  <div v-if="loaded" class="title-top">
+    <p class="title">
       {{ comment }}
-    </h1>
-    <div class="space" />
-    <h1 class="result">
+    </p>
+    <div>
+      <h1 class="result">
       正解：{{ correctAnswers }}
-    </h1>
-    <h2 class="explain">
-      解説：{{ selectExplain }}
-    </h2>
+      </h1>
+      <h2 class="ex explain">
+        解説：{{ selectExplain }}
+      </h2>
+    </div>
     <div>
       <button id="btn" @click="question()">
         {{ btn }}
@@ -30,6 +31,7 @@ export default {
       btn: '次の問題へ'
     }
   },
+
   computed: {
     correctAnswers () {
       return this.$store.state.answer.contents[0].correctAnswer
@@ -41,6 +43,7 @@ export default {
       return this.$store.state.answer.loaded
     }
   },
+
   created () {
     this.getAnswer()
   },
@@ -48,8 +51,9 @@ export default {
   methods: {
     // 次の問題を出力する
     question () {
-      this.$store.dispatch('getQuestion')
+      this.$store.dispatch('updateQuestion')
         .then(() => {
+          // 回答数によって画面遷移を変更する
           if (this.show === true) {
             this.$router.push('/question')
           } else {
@@ -62,8 +66,10 @@ export default {
     isShow () {
       const count = this.$store.state.question.count
       const amountQuestions = this.$store.state.question.amountQuestion
+      // 回答数によってボタンを変更する
       if (count === amountQuestions) {
         this.show = !this.show
+        // 問題を解き終わったら結果画面に移動する
         this.btn = this.show ? '次の問題へ' : '結果画面へ'
       }
     },
@@ -85,8 +91,8 @@ export default {
       this.comment = this.answerShow ? '正解!!!' : '不正解・・・'
     },
 
+    // 初期化してtopに戻る
     backTop () {
-      // 初期化してtopに戻る
       this.$store.commit('initCount')
       this.$store.commit('initCorrectCount')
       this.$router.push('/')
@@ -94,14 +100,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.answers {
-  text-align: center;
-}
-
-.answer {
-  font-weight: bold;
-  font-size: 30px;
-}
-</style>
