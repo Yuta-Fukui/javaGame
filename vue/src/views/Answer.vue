@@ -7,7 +7,7 @@
       <h1 class="result">
       正解：{{ correctAnswers }}
       </h1>
-      <h2 class="ex explain">
+      <h2 class="explain">
         解説：{{ selectExplain }}
       </h2>
     </div>

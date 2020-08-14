@@ -7,8 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class Answer {
 
-	private Long id;
-
 	private Long questionId;
 
 	private String correctAnswer;

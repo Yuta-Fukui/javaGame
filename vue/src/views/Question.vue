@@ -4,9 +4,10 @@
       問題{{ isCounted() }}
     </h1>
     <p class="question">
-      {{ selectQuestion }}
+      出題者：{{ setName }}
+      <br>
+      問題：{{ setQuestion }}
     </p>
-    <div class="space" />
     <div>
       <template v-for="item in computedChoices" id="question-btn">
         <button id="btn" :key="item" @click="answer(item)">
@@ -25,7 +26,10 @@ export default {
     }
   },
   computed: {
-    selectQuestion () {
+    setName () {
+      return this.$store.state.question.name
+    },
+    setQuestion () {
       return this.$store.state.question.questionStatement
     },
     loaded () {

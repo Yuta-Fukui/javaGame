@@ -1,14 +1,16 @@
 <template>
   <div class="title-top">
     <div class="title">
-      お気軽クイズ！！
+      お気軽クイズ
     </div>
+    <div class="space"></div>
     <p class="explain">
-      Team20の４択クイズ!!!
+      Team20の４択クイズ
     </p>
     <p class="explain">
       今回は{{ question }}問でチャレンジ！！
     </p>
+    <div class="space"></div>
     <div class="btn-list">
       <select v-model="question" class="list">
         <option v-for="(item, index) in checkboxItems" :key="index" :value="checkboxItems[index]">
@@ -16,7 +18,7 @@
         </option>
       </select>
       <button class="start-btn" @click="questions(checkboxItems[index])">
-        START!!!
+        START
       </button>
     </div>
   </div>
