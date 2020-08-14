@@ -6,7 +6,7 @@
     <html>
       <body>
         <button class="back start-btn" @click="backTop()">
-          TOPへ
+          TOP
         </button>
         <div id="nav" />
         <router-view />

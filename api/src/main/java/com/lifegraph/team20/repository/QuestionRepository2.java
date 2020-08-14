@@ -24,7 +24,7 @@ public class QuestionRepository2  {
 		return db.query(sql, new RowMapper<Question2>() {
 			public Question2 mapRow(ResultSet rs, int RowNum) throws SQLException {
 				return new Question2(rs.getLong("id"),rs.getString("questionStatement"), rs.getString("answer1"),
-						rs.getString("answer2"),rs.getString("answer3"),rs.getString("answer4"));
+						rs.getString("answer2"),rs.getString("answer3"),rs.getString("answer4"),rs.getString("name"));
 			}
 		});
 	}
@@ -33,7 +33,7 @@ public class QuestionRepository2  {
 		final String sql = "SELECT * FROM Correct_Answer where questionId =" + id;
 		return db.query(sql, new RowMapper<Answer>() {
 			public Answer mapRow(ResultSet rs, int RowNum) throws SQLException {
-				return new Answer(rs.getLong("id"),rs.getLong("questionId"),
+				return new Answer(rs.getLong("questionId"),
 						rs.getString("correctAnswer"),rs.getString("explanation"));
 			}
 		});

@@ -16,7 +16,9 @@ export default {
     // 問題の番号
     questionId: '',
     // 用意する問題数
-    amountQuestion: 0
+    amountQuestion: 0,
+    // 出題者の名前
+    name: ''
   },
 
   mutations: {
@@ -25,6 +27,7 @@ export default {
       state.choices = [payload.answer1, payload.answer2, payload.answer3, payload.answer4]
       state.questionStatement = payload.questionStatement
       state.questionId = payload.id
+      state.name = payload.name
       state.loaded = true
       state.count++
     },
