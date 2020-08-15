@@ -1,11 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueMeta from 'vue-meta'
 import Top from '../views/Top.vue'
 import Question from '../views/Question.vue'
 import Answer from '../views/Answer.vue'
 import Results from '../views/Results.vue'
 
 Vue.use(VueRouter)
+Vue.use(VueMeta, {
+  // optional pluginOptions
+  refreshOnceOnNavigation: true
+})
 
 const routes = [
   {

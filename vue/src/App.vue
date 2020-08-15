@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <!-- <div class="bg"></div>
-    <div class="bg bg2"></div>
-    <div class="bg bg3"></div> -->
     <html>
+      <head></head>
       <body>
         <button class="back start-btn" @click="backTop()">
           TOP
@@ -17,6 +15,11 @@
 
 <script>
 export default {
+  metaInfo: {
+    title: '20クイズ',
+    name: 'robots',
+    content: 'noindex'
+  },
   methods: {
     backTop () {
       this.$store.commit('initCount')

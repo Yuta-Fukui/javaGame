@@ -35,6 +35,11 @@ export default {
   },
 
   methods: {
+    metaInfo: {
+      title: '20クイズ',
+      name: 'robots',
+      content: 'noindex'
+    },
     isResults () {
       const count = this.$store.state.answer.correctCount
       const amountQuestions = this.$store.state.question.amountQuestion

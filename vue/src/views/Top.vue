@@ -34,6 +34,11 @@ export default {
   },
 
   methods: {
+    metaInfo: {
+      title: '20クイズ',
+      name: 'robots',
+      content: 'noindex'
+    },
     // 問題を出力する
     questions () {
       const amountQuestions = this.question
