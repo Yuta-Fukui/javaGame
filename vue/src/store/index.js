@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import answer from './modules/answer.js'
+import question from './modules/question.js'
 import axios from 'axios'
+
+require('@/assets/sass/background.scss')
+require('@/assets/sass/common.scss')
 
 Vue.use(Vuex)
 
@@ -11,6 +16,10 @@ const config = {
 }
 
 export default new Vuex.Store({
+  modules: {
+    answer,
+    question
+  },
   state: {
     account: {
       // TODO: delete because of test

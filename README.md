@@ -1,4 +1,4 @@
-# life-graph
+# javaGame
 人生グラフ
 
 ### docker起動方法
