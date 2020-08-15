@@ -21,6 +21,11 @@
 
 <script>
 export default {
+  metaInfo: {
+    title: '20クイズ',
+    name: 'robots',
+    content: 'noindex'
+  },
   data () {
     return {
       show: true,
