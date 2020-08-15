@@ -3,6 +3,9 @@
     <h1 class="title">
       問題{{ isCounted() }}
     </h1>
+    <p class="question countdown">
+      残り {{ timerCount }}秒
+    </p>
     <p class="question">
       出題者：{{ setName }}
       <br>
@@ -27,7 +30,18 @@ export default {
   },
   data () {
     return {
-      count: 0
+      count: 0,
+      timerCount: 30
+    }
+  },
+  created () {
+    setInterval(() => { this.timerCount-- }, 1000)
+  },
+  watch: {
+    timerCount: function (val) {
+      if (val <= 0) {
+        this.answer()
+      }
     }
   },
   computed: {
